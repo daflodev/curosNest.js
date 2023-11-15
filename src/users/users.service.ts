@@ -7,15 +7,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
-
-  constructor (@InjectRepository(User)
-  private readonly userRepository: Repository<User>
-  
-  ){ }
-
-    
-
-
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
 
   create(createUserDto: CreateUserDto) {
     return this.userRepository.save(createUserDto);
@@ -25,10 +20,8 @@ export class UsersService {
     return this.userRepository.findOneBy({ email });
   }
 
-
-
   findAll() {
-    return `This action returns all users`;
+    return this.userRepository.find();
   }
 
   findOne(id: number) {

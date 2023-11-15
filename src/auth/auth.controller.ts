@@ -48,6 +48,6 @@ export class AuthController {
     @UseGuards(AuthGuard, RolesGuard)
     profile(@Req() req: RequestWithUser) {
 
-        return this.authService.profile(req.user)
+        return this.authService.profile(req.user) 
     }
 }
