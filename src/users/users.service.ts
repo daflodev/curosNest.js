@@ -24,11 +24,18 @@ export class UsersService {
   findOneByEmail(email: string) {
     return this.userRepository.findOneBy({ email });
   }
-
+  findByEmailWithPassword(email: string) {
+    return this.userRepository.findOne({
+       where: { email },
+       select: ["id", "name", "email", "password", "role"],
+      }
+     
+      );
+  }
 
 
   findAll() {
-    return `This action returns all users`;
+    return this.userRepository.find();
   }
 
   findOne(id: number) {

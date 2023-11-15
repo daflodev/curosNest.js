@@ -28,7 +28,7 @@ export class AuthService {
     }
 
     async login({ email, password }: LoginDto) {
-        const users = await this.usersService.findOneByEmail(email);
+        const users = await this.usersService.findByEmailWithPassword(email);
         if (!users) {
             throw new UnauthorizedException('users not exists')
         }
